@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>글쓰기 - 목록 관리 및 글쓰기</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background: #333;
+            color: #fff;
+            padding: 1rem 0;
+            text-align: center;
+        }
+        main {
+            max-width: 800px;
+            margin: auto;
+            padding: 2rem;
+            background: #fff;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            margin-bottom: 1rem;
+            padding: 0.5rem;
+            background-color: #f0f0f0;
+            cursor: pointer;
+        }
+        .selected {
+            background-color: #007BFF;
+            color: #fff;
+        }
+        textarea {
+            width: 100%;
+            height: 200px;
+            padding: 1rem;
+            box-sizing: border-box;
+            margin-bottom: 1rem;
+        }
+        .write-button {
+            background: #007BFF;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>글쓰기</h1>
+    </header>
+    <main>
+        <h2>카테고리 선택</h2>
+        <ul id="category-list">
+            <li onclick="selectCategory(this)" data-category="HTML">HTML</li>
+            <li onclick="selectCategory(this)" data-category="CSS">CSS</li>
+            <li onclick="selectCategory(this)" data-category="JavaScript">JavaScript</li>
+            <li onclick="selectCategory(this)" data-category="Python">Python</li>
+            <li onclick="selectCategory(this)" data-category="C++">C++</li>
+        </ul>
+        <h2>글 작성</h2>
+        <textarea id="post-content" placeholder="글 내용을 입력하세요..."></textarea>
+        <button class="write-button" onclick="writePost()">글쓰기</button>
+    </main>
+
+    <script>
+        let selectedCategory = null;
+
+        function selectCategory(element) {
+            if (selectedCategory) {
+                selectedCategory.classList.remove('selected');
+            }
+            selectedCategory = element;
+            selectedCategory.classList.add('selected');
+        }
+
+        function writePost() {
+            if (!selectedCategory) {
+                alert('카테고리를 선택하세요.');
+                return;
+            }
+            const category = selectedCategory.getAttribute('data-category');
+            const content = document.getElementById('post-content').value;
+
+            // GitHub Issues에 데이터를 저장
+            const data = {
+                title: category,
+                body: content
+            };
+
+            fetch('https://api.github.com/repos/username/repository-name/issues', {
+                method: 'POST',
+                headers: {
+                    'Authorization': 'token YOUR_GITHUB_PERSONAL_ACCESS_TOKEN',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data),
+            })
+            .then(response => {
+                if (response.ok) {
+                    alert('글이 성공적으로 등록되었습니다.');
+                    // 필요한 추가 작업이 있다면 이 곳에 추가할 수 있습니다.
+                    // 예를 들어, 다른 페이지로 이동하는 등의 작업을 추가할 수 있습니다.
+                    window.location.href = 'index.html'; // 메인 페이지로 이동
+                } else {
+                    alert('글 등록에 실패했습니다.');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('글 등록 중 오류가 발생했습니다.');
+            });
+        }
+    </script>
+</body>
+</html>

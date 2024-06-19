@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>프로그래밍 공부 블로그</title>
+    <title>프로그래밍 공부 블로그 - CSS</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -15,7 +15,7 @@
             background: #333;
             color: #fff;
             padding: 1rem 0;
-            text-align: center;
+            text-align: center.
         }
         nav {
             background: #555;
@@ -55,14 +55,12 @@
             bottom: 0;
             width: 100%;
         }
-        .write-button {
+        .edit-button {
             background: #007BFF;
             color: white;
             border: none;
             padding: 0.5rem 1rem;
             cursor: pointer;
-            display: inline-block;
-            margin-bottom: 1rem;
         }
     </style>
 </head>
@@ -71,33 +69,39 @@
         <h1>프로그래밍 공부 블로그</h1>
     </header>
     <nav>
-        <a href="#">홈</a>
-        <a href="#" onclick="showCategory('HTML')">HTML</a>
-        <a href="#" onclick="showCategory('CSS')">CSS</a>
-        <a href="#" onclick="showCategory('JavaScript')">JavaScript</a>
-        <a href="#" onclick="showCategory('Python')">Python</a>
-        <a href="#" onclick="showCategory('C++')">C++</a>
+        <a href="index.html">홈</a>
+        <a href="html.html">HTML</a>
+        <a href="css.html">CSS</a>
+        <a href="javascript.html">JavaScript</a>
+        <a href="python.html">Python</a>
+        <a href="cpp.html">C++</a>
     </nav>
     <main>
-        <article id="welcome">
-            <h2>환영합니다!</h2>
-            <p>이 블로그는 프로그래밍 공부 내용을 정리하기 위해 만들어졌습니다. 위의 메뉴를 클릭하여 각 언어별 내용을 확인해보세요.</p>
-            <button class="write-button" onclick="goToWritePage()">글쓰기</button>
+        <article id="css">
+            <h2>CSS</h2>
+            <p>CSS는 웹 페이지의 스타일을 정의하는 언어입니다. 다음은 CSS의 기본 예제입니다:</p>
+            <pre><code>body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+h1 {
+    color: blue;
+}</code></pre>
+            <button class="edit-button" onclick="editContent()">수정</button>
         </article>
     </main>
     <footer>
         <p>&copy; 2024 프로그래밍 공부 블로그. All rights reserved.</p>
     </footer>
-
     <script>
-        function showCategory(category) {
-            // 예시로 각 카테고리를 클릭했을 때 동작하는 함수입니다.
-            alert(category + " 카테고리를 선택했습니다.");
-        }
-
-        function goToWritePage() {
-            // 글쓰기 페이지로 이동
-            window.location.href = 'write.html';
+        function editContent() {
+            const article = document.getElementById('css');
+            const content = article.innerHTML;
+            const newContent = prompt('수정할 내용을 입력하세요:', content);
+            if (newContent !== null) {
+                article.innerHTML = newContent + '<button class="edit-button" onclick="editContent()">수정</button>';
+            }
         }
     </script>
 </body>
