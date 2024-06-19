@@ -1,0 +1,115 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>프로그래밍 공부 블로그</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background: #333;
+            color: #fff;
+            padding: 1rem 0;
+            text-align: center;
+        }
+        nav {
+            background: #555;
+            color: #fff;
+            padding: 1rem;
+            text-align: center;
+        }
+        nav a {
+            color: #fff;
+            margin: 0 1rem;
+            text-decoration: none;
+        }
+        main {
+            padding: 2rem;
+            max-width: 800px;
+            margin: auto;
+            background: #fff;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        article {
+            margin-bottom: 2rem;
+        }
+        article h2 {
+            color: #333;
+        }
+        pre {
+            background: #f4f4f4;
+            padding: 1rem;
+            overflow: auto;
+        }
+        footer {
+            background: #333;
+            color: #fff;
+            text-align: center;
+            padding: 1rem 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>프로그래밍 공부 블로그</h1>
+    </header>
+    <nav>
+        <a href="#html">HTML</a>
+        <a href="#css">CSS</a>
+        <a href="#javascript">JavaScript</a>
+        <a href="#python">Python</a>
+    </nav>
+    <main>
+        <article id="html">
+            <h2>HTML</h2>
+            <p>HTML은 웹 페이지의 구조를 정의하는 마크업 언어입니다. 다음은 HTML의 기본 예제입니다:</p>
+            <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;페이지 제목&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;여기는 제목입니다&lt;/h1&gt;
+    &lt;p&gt;여기는 단락입니다&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+        </article>
+        <article id="css">
+            <h2>CSS</h2>
+            <p>CSS는 웹 페이지의 스타일을 정의하는 언어입니다. 다음은 CSS의 기본 예제입니다:</p>
+            <pre><code>body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+h1 {
+    color: blue;
+}</code></pre>
+        </article>
+        <article id="javascript">
+            <h2>JavaScript</h2>
+            <p>JavaScript는 웹 페이지에 동적 기능을 추가하는 언어입니다. 다음은 JavaScript의 기본 예제입니다:</p>
+            <pre><code>document.addEventListener('DOMContentLoaded', function() {
+    document.querySelector('h1').textContent = 'Hello, JavaScript!';
+});</code></pre>
+        </article>
+        <article id="python">
+            <h2>Python</h2>
+            <p>Python은 강력한 프로그래밍 언어로, 다양한 용도로 사용됩니다. 다음은 Python의 기본 예제입니다:</p>
+            <pre><code>print('Hello, Python!')</code></pre>
+        </article>
+    </main>
+    <footer>
+        <p>&copy; 2024 프로그래밍 공부 블로그. All rights reserved.</p>
+    </footer>
+</body>
+</html>
